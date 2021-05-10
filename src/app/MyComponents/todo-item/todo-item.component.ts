@@ -1,0 +1,33 @@
+import { Component, OnInit,Input,EventEmitter, Output } from '@angular/core';
+//import * as EventEmitter from 'node:events';
+
+import { Todo } from 'src/app/Todo';
+
+@Component({
+  selector: 'app-todo-item',
+  templateUrl: './todo-item.component.html',
+  styleUrls: ['./todo-item.component.css']
+})
+export class TodoItemComponent implements OnInit {
+ @ Input()todo: Todo;
+ @ Input()i: number;
+ @ Output()todoDelete: EventEmitter<Todo>= new EventEmitter
+ @ Output()todocheckbox: EventEmitter<Todo>= new EventEmitter
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+  onClick(todo:Todo){
+   this.todoDelete.emit(todo);
+
+    console.log("onClick has been triggerd")
+  }
+  onCheckboxClick(todo){
+    console.log(todo);
+    this.todocheckbox.emit(todo);
+    console.log(todo);
+
+
+  }
+
+}
